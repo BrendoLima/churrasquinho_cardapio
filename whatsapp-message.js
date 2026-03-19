@@ -16,7 +16,7 @@ function buildWhatsAppMsg(entries, total, metodoPagamento) {
   linhas.push('🔥 *Churrasquinho do Juanete*')
   linhas.push('')
 
-  entries.forEach(function(e) {
+  entries.forEach(function (e) {
     var sub = buildSelectionsLabel(e.item, e.selections)
     var linha = '• ' + e.qty + 'x ' + e.item.nome
     if (sub) linha += ' (' + sub + ')'
@@ -28,14 +28,14 @@ function buildWhatsAppMsg(entries, total, metodoPagamento) {
   linhas.push('💰 Total: *' + fmtPrice(total) + '*')
 
   if (metodoPagamento) {
-    var icone = metodoPagamento === 'Dinheiro'          ? '💵'
-              : metodoPagamento === 'PIX'               ? '📱'
-              : '💳'
+    var icone = metodoPagamento === 'Dinheiro' ? '💵'
+      : metodoPagamento === 'PIX' ? '📱'
+        : '💳'
     linhas.push(icone + ' Metodo de Pagamento: *' + metodoPagamento + '*')
   }
 
   linhas.push('')
-  linhas.push('✅ Envie esta mensagem para confirmar seu pedido')
+  linhas.push('✅ Envie esta mensagem para confirmar seu pedido !')
 
   return linhas.join('\n')
 }

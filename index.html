@@ -1,14 +1,22 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <title>churrasquinho-cardapio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <script>
+    import { inject } from "@vercel/analytics"
+    inject()
+  </script>
 </head>
+
 <body>
 
   <!-- Header: logo + abas de navegação (preenchido pelo JS) -->
@@ -21,13 +29,13 @@
   <nav id="bottom-nav">
     <div class="cart-wrap">
       <button id="cart-btn">🛒</button>
-      <span   id="cart-count" class="hidden">0</span>
+      <span id="cart-count" class="hidden">0</span>
     </div>
   </nav>
 
   <!-- Overlays (modal de detalhe, carrinho, opções) -->
-  <div id="modal-overlay"  class="overlay hidden"></div>
-  <div id="cart-overlay"   class="overlay hidden"></div>
+  <div id="modal-overlay" class="overlay hidden"></div>
+  <div id="cart-overlay" class="overlay hidden"></div>
   <div id="opcoes-overlay" class="overlay hidden"></div>
 
   <!-- Toast de feedback ao adicionar item -->
@@ -52,5 +60,7 @@
   <script src="app.js"></script>
   <script src="whatsapp-message.js"></script>
 
+
 </body>
+
 </html>

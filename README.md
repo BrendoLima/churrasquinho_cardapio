@@ -1,7 +1,13 @@
 # churrasquinho-cardapio
 
-Cardápio virtual mobile para o **Churrasquinho do Juanete**, churrascaria localizada em Alegre/ES.  
+Cardápio virtual mobile para o **Churrasquinho do Juanete**, churrascaria localizada em Porciuncula/RJ.  
 Desenvolvido para funcionar diretamente no navegador, sem servidor — basta abrir o `index.html`.
+
+---
+
+### Comentários do Autor (Importante!!!)
+
+__ Ainda pretendo fazer várias alterações de segurança, como criar variáveis de ambiente, modularizar funções e tipificar o layout.
 
 ---
 
