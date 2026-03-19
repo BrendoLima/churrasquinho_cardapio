@@ -37,7 +37,7 @@ var DATA_ESPECIAIS = {
           id: 'jantinha',
           nome: 'Jantinha',
           preco: 22.00,
-          img: 'https://drive.google.com/file/d/12IBttncw7RUbiYAnJ3hLGPqpXAakdVT0/view?usp=sharing',
+          img: './assets/Jantinha.png',
           descricao: '1 Churrasquinho + Arroz + Farofa + Vinagrete. Queijo (R$27) ou Medalhão (R$27) disponíveis.',
           opcoes: [
             {
