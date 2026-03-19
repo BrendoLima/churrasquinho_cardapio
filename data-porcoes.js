@@ -10,7 +10,7 @@ var DATA_PORCOES = {
           id: 'torresminho',
           nome: 'Torresminho',
           preco: 28.00,
-          img: 'https://loremflickr.com/400/400/pork,crackling,crispy',
+          img: '',
           descricao: 'Crocante e saboroso, perfeito para petiscar.'
         },
 
@@ -18,7 +18,7 @@ var DATA_PORCOES = {
           id: 'lambari',
           nome: 'Lambari',
           preco: 30.00,
-          img: 'https://loremflickr.com/400/400/fried,fish,crispy',
+          img: '',
           descricao: 'Lambari frito crocantinho da nossa cozinha.'
         },
 
@@ -26,7 +26,9 @@ var DATA_PORCOES = {
           id: 'linguica_mel',
           nome: 'Linguiça no Mel',
           preco: 28.00,
-          img: 'https://loremflickr.com/400/400/sausage,grilled,honey',
+          img: '',
+
+          img: '',
           descricao: 'Linguicinha caramelada com mel irresistível.'
         },
 
@@ -35,7 +37,7 @@ var DATA_PORCOES = {
           nome: 'Batata Frita',
           preco: 22.00,
           info: '400g',
-          img: 'https://loremflickr.com/400/400/french,fries,crispy',
+          img: '',
           descricao: 'Batata frita crocante, sequinha e dourada.'
         },
 
@@ -44,7 +46,7 @@ var DATA_PORCOES = {
           nome: 'Mandioquinha',
           preco: 22.00,
           info: '400g',
-          img: 'https://loremflickr.com/400/400/yuca,fried,food',
+          img: '',
           descricao: 'Mandioquinha frita sequinha e temperada.'
         },
 
@@ -53,7 +55,7 @@ var DATA_PORCOES = {
           nome: 'Anel de Cebola',
           preco: 24.00,
           info: '400g',
-          img: 'https://loremflickr.com/400/400/onion,rings,fried',
+          img: '',
           descricao: 'Anéis de cebola empanados e crocantes.'
         },
 
@@ -62,7 +64,7 @@ var DATA_PORCOES = {
           nome: 'Tilápia',
           preco: 38.00,
           info: '400g',
-          img: 'https://loremflickr.com/400/400/tilapia,fish,fried',
+          img: '',
           descricao: 'Tilápia frita crocante, temperada na medida.'
         },
 
@@ -71,7 +73,7 @@ var DATA_PORCOES = {
           nome: 'Bucho Frito',
           preco: 32.00,
           info: '350g',
-          img: 'https://loremflickr.com/400/400/tripe,fried,food',
+          img: '',
           descricao: 'Bucho frito empanado, prato da tradição.'
         },
 
@@ -80,7 +82,7 @@ var DATA_PORCOES = {
           nome: 'Frango Empanado',
           preco: 30.00,
           info: '350g',
-          img: 'https://loremflickr.com/400/400/chicken,fried,crispy',
+          img: '',
           descricao: 'Frango empanado douradinho e crocante.'
         },
 
@@ -89,7 +91,7 @@ var DATA_PORCOES = {
           nome: 'Camarão',
           preco: 36.00,
           info: '6 un',
-          img: 'https://loremflickr.com/400/400/shrimp,fried,seafood',
+          img: '',
           descricao: 'Camarão empanado e crocante, direto da frigideira.'
         },
 
@@ -98,7 +100,7 @@ var DATA_PORCOES = {
           nome: 'Pastel Comum',
           preco: 28.00,
           info: '8 un',
-          img: 'https://loremflickr.com/400/400/empanada,fried,pastry',
+          img: '',
           descricao: 'Pastel recheado frito na hora.'
         },
 
@@ -107,7 +109,7 @@ var DATA_PORCOES = {
           nome: 'Pastel de Angu',
           preco: 30.00,
           info: '12 un',
-          img: 'https://loremflickr.com/400/400/cornmeal,dumpling,fried',
+          img: '',
           descricao: 'Pastel de angu, sabor único e especial.'
         }
       ]
@@ -120,7 +122,7 @@ var DATA_PORCOES = {
           id: 'trio_amigos',
           nome: 'Trio dos Amigos',
           preco: 55.00,
-          img: 'https://loremflickr.com/400/400/bbq,platter,feast',
+          img: '',
           descricao: 'Torresmo de Rolo + Mandioquinha + Linguiça.'
         },
 
@@ -128,7 +130,7 @@ var DATA_PORCOES = {
           id: 'macarrao_chapa',
           nome: 'Macarrão na Chapa',
           preco: 45.00,
-          img: 'https://loremflickr.com/400/400/noodles,wok,stirfry',
+          img: '',
           descricao: 'Macarrão, Calabreza, Frango e Molho Shoyu.'
         },
 
@@ -136,7 +138,7 @@ var DATA_PORCOES = {
           id: 'pizza_cone',
           nome: 'Pizza no Cone',
           preco: 18.00,
-          img: 'https://loremflickr.com/400/400/pizza,street,food',
+          img: '',
           descricao: 'Frango c/ Catupiry ou Moda da Casa (calabresa).',
           opcoes: [
             {

@@ -65,7 +65,7 @@ var DATA_ESPECIAIS = {
           id: 'arroz',
           nome: 'Arroz',
           preco: 8.00,
-          img: 'https://loremflickr.com/400/400/rice,white,food',
+          img: '',
           descricao: 'Porção de arroz branco soltinho.'
         },
 
@@ -73,7 +73,7 @@ var DATA_ESPECIAIS = {
           id: 'farofa',
           nome: 'Farofa',
           preco: 8.00,
-          img: 'https://loremflickr.com/400/400/cassava,flour,food',
+          img: '',
           descricao: 'Farofa temperada e crocante.'
         },
 
@@ -81,7 +81,7 @@ var DATA_ESPECIAIS = {
           id: 'vinagrete',
           nome: 'Vinagrete',
           preco: 8.00,
-          img: 'https://loremflickr.com/400/400/tomato,salsa,fresh',
+          img: '',
           descricao: 'Vinagrete fresco de tomate e cebola.'
         }
       ]

@@ -13,7 +13,7 @@ var DATA_CHURRASCO = {
           preco: 65.00,
           layout: 'wide',
           info: 'Para Casal — 400g',
-          img: 'https://loremflickr.com/800/350/grilled,steak,bbq',
+          img: '',
           descricao: 'Carne + farofa + tomate + pimentão + cebola + batata frita ou mandioquinha.',
           opcoes: [
             {
@@ -41,7 +41,7 @@ var DATA_CHURRASCO = {
           preco: 110.00,
           layout: 'wide',
           info: 'Para Galera — 800g',
-          img: 'https://loremflickr.com/800/350/barbecue,beef,grill',
+          img: '',
           descricao: '800g de carne + farofa + tomate + pimentão + cebola + batata frita ou mandioquinha.',
           opcoes: [
             {
@@ -69,7 +69,7 @@ var DATA_CHURRASCO = {
           preco: 70.00,
           layout: 'wide',
           info: 'Para Casal — 400g',
-          img: 'https://loremflickr.com/800/350/mixed,grill,meat',
+          img: '',
           descricao: 'Boi + Porco + Frango + Linguiça + pimentão + farofa + tomate + cebola + batata frita ou mandioquinha.',
           opcoes: [
             {
@@ -97,7 +97,7 @@ var DATA_CHURRASCO = {
           preco: 120.00,
           layout: 'wide',
           info: 'Para Galera — 800g',
-          img: 'https://loremflickr.com/800/350/meat,platter,feast',
+          img: '',
           descricao: '800g de Boi + Porco + Frango + Linguiça + pimentão + farofa + tomate + cebola + batata frita ou mandioquinha.',
           opcoes: [
             {

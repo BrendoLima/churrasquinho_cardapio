@@ -224,7 +224,7 @@ var DATA_ALCOOL = {
           id: 'gim_tonica',
           nome: 'Gim Tônica',
           preco: 22.00,
-          img: 'https://loremflickr.com/400/400/gin,tonic,drink',
+          img: '',
           descricao: 'Gin artesanal com tônica refrescante.'
         },
 
@@ -232,7 +232,7 @@ var DATA_ALCOOL = {
           id: 'seducao',
           nome: 'Sedução',
           preco: 22.00,
-          img: 'https://loremflickr.com/400/400/cocktail,red,drink',
+          img: '',
           descricao: 'Drink especial da casa, irresistível.'
         },
 
@@ -240,7 +240,7 @@ var DATA_ALCOOL = {
           id: 'pina_colada',
           nome: 'Piña Colada',
           preco: 24.00,
-          img: 'https://loremflickr.com/400/400/pina,colada,tropical',
+          img: '',
           descricao: 'Tropical e cremosa, pura viagem.'
         },
 
@@ -248,7 +248,7 @@ var DATA_ALCOOL = {
           id: 'caipirinha_havaiana',
           nome: 'Caipirinha Havaiana',
           preco: 22.00,
-          img: 'https://loremflickr.com/400/400/tropical,cocktail,fruit',
+          img: '',
           descricao: 'Caipirinha tropical no estilo havaiano.'
         },
 
@@ -256,7 +256,7 @@ var DATA_ALCOOL = {
           id: 'parafuso',
           nome: 'Parafuso',
           preco: 22.00,
-          img: 'https://loremflickr.com/400/400/caipirinha,lime,drink',
+          img: '',
           descricao: 'A famosa caipirinha Parafuso.'
         },
 
@@ -264,7 +264,7 @@ var DATA_ALCOOL = {
           id: 'caipirinha_la',
           nome: 'Caipirinha de L.A.',
           preco: 22.00,
-          img: 'https://loremflickr.com/400/400/lemon,cocktail,ice',
+          img: '',
           descricao: 'Caipirinha com toque especial de Los Angeles.'
         },
 
@@ -272,7 +272,7 @@ var DATA_ALCOOL = {
           id: 'frozen',
           nome: 'Frozen',
           preco: 24.00,
-          img: 'https://loremflickr.com/400/400/frozen,strawberry,drink',
+          img: '',
           descricao: 'Frozen de morango refrescante.'
         }
       ]
@@ -285,7 +285,7 @@ var DATA_ALCOOL = {
           id: 'cocada',
           nome: 'Cocada',
           preco: 6.00,
-          img: 'https://loremflickr.com/400/400/coconut,sweet,dessert',
+          img: '',
           descricao: 'Doce de cocada artesanal feita na hora.'
         }
       ]
