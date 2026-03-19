@@ -3,11 +3,18 @@
 Cardápio virtual mobile para o **Churrasquinho do Juanete**, churrascaria localizada em Porciuncula/RJ.  
 Desenvolvido para funcionar diretamente no navegador, sem servidor — basta abrir o `index.html`.
 
+### URL: <https://churrasquinho-cardapio.vercel.app/>
+
 ---
 
 ### Comentários do Autor (Importante!!!)
 
-__ Ainda pretendo fazer várias alterações de segurança, como criar variáveis de ambiente, modularizar funções e tipificar o layout.
+__ Ainda pretendo fazer várias alterações na lista a seguir:
+
+*Segurança: Como criar variáveis de ambiente para abarcar dados sensíveis.
+*Mantenabilidade: Modularizar funções, reduzindo complexidade.
+*Legibilidade: Tipificar o layout e separar o CSS.
+*Organização: Padronizar e reescrever commits.
 
 ---
 
