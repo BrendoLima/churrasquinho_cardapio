@@ -225,7 +225,7 @@ function renderHeader() {
     var btn = document.createElement('button')
     btn.className    = 'tab'
     btn.id           = 'tab-' + cat.id
-    btn.textContent  = cat.icone + ' ' + cat.label
+    btn.textContent  = cat.label
     btn.onclick = function() {
       var section = document.getElementById('section-' + cat.id)
       if (section) section.scrollIntoView({ behavior: 'smooth', block: 'start' })
@@ -258,7 +258,7 @@ function renderAllSections() {
         /* Título da categoria como âncora visual */
         var h1 = document.createElement('h1')
         h1.className   = 'cat-title'
-        h1.textContent = categoria.icone + ' ' + categoria.label
+        h1.textContent = categoria.label
         s.appendChild(h1)
 
         categoria.subcategorias.forEach(function(sub) {

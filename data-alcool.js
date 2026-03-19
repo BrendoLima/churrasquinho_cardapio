@@ -3,7 +3,6 @@
 var DATA_ALCOOL = {
   id: 'alcool',
   label: 'Alcoólicas',
-  icone: '🍺',
   subcategorias: [
     {
       label: 'Cervejas',
@@ -12,7 +11,7 @@ var DATA_ALCOOL = {
           id: 'heineken_ln',
           nome: 'Heineken',
           preco: 14.00,
-          emoji: '🍺',
+          img: '',
           descricao: 'Long Neck ou Zero.',
           opcoes: [
             {
@@ -38,7 +37,7 @@ var DATA_ALCOOL = {
           id: 'cerveja_600',
           nome: 'Cerveja 600ml',
           preco: 18.00,
-          emoji: '🍻',
+          img: '',
           descricao: 'Heineken ou Spaten.',
           opcoes: [
             {
@@ -64,7 +63,7 @@ var DATA_ALCOOL = {
           id: 'stella_ln',
           nome: 'Long Neck Stella',
           preco: 14.00,
-          emoji: '🌟',
+          img: '',
           descricao: 'Puro Malte ou Pure Gold.',
           opcoes: [
             {
@@ -90,7 +89,7 @@ var DATA_ALCOOL = {
           id: 'cracudinha',
           nome: 'Cracudinha',
           preco: 6.00,
-          emoji: '🍶',
+          img: '',
           descricao: 'Brahma, Antarctica ou Original.',
           opcoes: [
             {
@@ -121,7 +120,7 @@ var DATA_ALCOOL = {
           id: 'chopp',
           nome: 'Chopp',
           preco: 10.00,
-          emoji: '🍺',
+          img: '',
           descricao: 'Claro ou Vinho.',
           opcoes: [
             {
@@ -147,7 +146,7 @@ var DATA_ALCOOL = {
           id: 'latao',
           nome: 'Latão',
           preco: 10.00,
-          emoji: '🥫',
+          img: '',
           descricao: 'Antarctica ou Brahma.',
           opcoes: [
             {
@@ -178,7 +177,7 @@ var DATA_ALCOOL = {
           id: 'cachaca',
           nome: 'Cachaça da Casa',
           preco: 8.00,
-          emoji: '🥃',
+          img: '',
           descricao: 'Dose especial da casa.'
         },
 
@@ -186,7 +185,7 @@ var DATA_ALCOOL = {
           id: 'taca_vinho',
           nome: 'Taça de Vinho',
           preco: 16.00,
-          emoji: '🍷',
+          img: '',
           descricao: 'Tinto ou Branco.',
           opcoes: [
             {
@@ -212,7 +211,7 @@ var DATA_ALCOOL = {
           id: 'campari',
           nome: 'Campari',
           preco: 18.00,
-          emoji: '🔴',
+          img: '',
           descricao: 'Clássico e refinado.'
         }
       ]

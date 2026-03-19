@@ -2,7 +2,6 @@
 var DATA_ESPECIAIS = {
   id: 'especiais',
   label: 'Especiais',
-  icone: '⭐',
   subcategorias: [
     {
       itens: [

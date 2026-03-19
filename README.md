@@ -3,6 +3,8 @@
 Cardápio virtual mobile para o **Churrasquinho do Juanete**, churrascaria localizada em Porciuncula/RJ.  
 Desenvolvido para funcionar diretamente no navegador, sem servidor — basta abrir o `index.html`.
 
+---
+
 ### URL: <https://churrasquinho-cardapio.vercel.app/>
 
 ---
@@ -100,8 +102,7 @@ Cada seção tem seu próprio arquivo de dados. Para alterar preços, nomes, ima
   nome:      'Nome do Item',      // exibido no card e no carrinho
   preco:     22.00,               // valor base em reais
   descricao: 'Descrição curta.',  // exibida no modal de detalhe
-  img:       'https://...',       // URL da foto (opcional)
-  emoji:     '🍖',               // fallback quando não há foto
+  img:       '',                  // URL da foto — preencher com caminho real
   info:      '400g',              // informação extra (opcional)
   layout:    'wide',              // 'wide' = card largo; omitido = card quadrado
   opcoes: [                       // sub-seleções (opcional)
@@ -116,6 +117,9 @@ Cada seção tem seu próprio arquivo de dados. Para alterar preços, nomes, ima
   ]
 }
 ```
+
+> **Sobre as imagens:** todos os campos `img` estão com `''` aguardando as fotos reais.  
+> Basta substituir a string vazia pela URL ou caminho relativo da imagem, ex.: `img: 'fotos/churrasquinho.jpg'`
 
 ---
 
@@ -134,7 +138,7 @@ Cada seção tem seu próprio arquivo de dados. Para alterar preços, nomes, ima
 
 * HTML5 / CSS3 / JavaScript ES5 puro — sem frameworks, sem bundler
 * [Google Fonts — Nunito](https://fonts.google.com/specimen/Nunito)
-* [loremflickr.com](https://loremflickr.com) — imagens placeholder (substituir por fotos reais)
+* [Vercel Analytics](https://vercel.com/docs/analytics) — pageviews via `/_vercel/insights/script.js` (ativo automaticamente ao hospedar na Vercel)
 * API Web: `IntersectionObserver`, `navigator.clipboard`
 
 ---

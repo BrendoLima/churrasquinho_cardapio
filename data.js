@@ -13,10 +13,9 @@
      nome      {string}   nome exibido
      preco     {number}   valor base em reais
      descricao {string}   texto do modal de detalhe
-     img       {string}   URL da foto (opcional)
-     emoji     {string}   ícone fallback sem imagem
+     img       {string}   URL da foto ('' = aguardando foto real)
      info      {string}   detalhe extra, ex: "400g" (opcional)
-     layout    {string}   "wide" | "row" | omitido = card quadrado
+     layout    {string}   "wide" = card largo; omitido = card quadrado
      opcoes    {Array}    grupos de sub-opções (opcional)
 ============================================================ */
 

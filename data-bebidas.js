@@ -4,7 +4,6 @@
 var DATA_BEBIDAS = {
   id: 'bebidas',
   label: 'Bebidas',
-  icone: '🥤',
   subcategorias: [
     {
       label: 'Refrigerantes',
@@ -13,7 +12,7 @@ var DATA_BEBIDAS = {
           id: 'coca_cola',
           nome: 'Coca-Cola',
           preco: 7.00,
-          emoji: '🥤',
+          img: '',
           descricao: 'Lata, KS ou Zero.',
           opcoes: [
             {
@@ -44,7 +43,7 @@ var DATA_BEBIDAS = {
           id: 'guarana',
           nome: 'Guaraná Antarctica',
           preco: 6.00,
-          emoji: '🟢',
+          img: '',
           descricao: 'Lata Comum.'
         },
 
@@ -52,7 +51,7 @@ var DATA_BEBIDAS = {
           id: 'refrigerante_15',
           nome: 'Refrigerante 1,5L',
           preco: 14.00,
-          emoji: '🍶',
+          img: '',
           descricao: 'Guaraná ou Coca-Cola.',
           opcoes: [
             {
@@ -83,7 +82,7 @@ var DATA_BEBIDAS = {
           id: 'agua_mineral',
           nome: 'Água Mineral',
           preco: 5.00,
-          emoji: '💧',
+          img: '',
           descricao: 'Com Gás ou Comum.',
           opcoes: [
             {
@@ -109,7 +108,7 @@ var DATA_BEBIDAS = {
           id: 'h2oh',
           nome: 'H2OH',
           preco: 7.00,
-          emoji: '💚',
+          img: '',
           descricao: 'Com Limoneto ou Comum.',
           opcoes: [
             {
@@ -135,7 +134,7 @@ var DATA_BEBIDAS = {
           id: 'agua_tonica',
           nome: 'Água Tônica',
           preco: 7.00,
-          emoji: '🫧',
+          img: '',
           descricao: 'Comum ou Zero.',
           opcoes: [
             {
@@ -161,7 +160,7 @@ var DATA_BEBIDAS = {
           id: 'del_valle',
           nome: 'Del Valle 1L',
           preco: 12.00,
-          emoji: '🍇',
+          img: '',
           descricao: 'Sabor Uva.'
         },
 
@@ -169,7 +168,7 @@ var DATA_BEBIDAS = {
           id: 'energetico',
           nome: 'Energético',
           preco: 18.00,
-          emoji: '⚡',
+          img: '',
           descricao: 'Red Bull ou Monster.',
           opcoes: [
             {
@@ -195,7 +194,7 @@ var DATA_BEBIDAS = {
           id: 'guaravita',
           nome: 'Guaravita',
           preco: 5.00,
-          emoji: '🟡',
+          img: '',
           descricao: 'Comum.'
         }
       ]

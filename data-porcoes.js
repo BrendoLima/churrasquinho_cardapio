@@ -3,7 +3,6 @@
 var DATA_PORCOES = {
   id: 'porcoes',
   label: 'Porções',
-  icone: '🍖',
   subcategorias: [
     {
       itens: [

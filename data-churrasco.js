@@ -3,7 +3,6 @@
 var DATA_CHURRASCO = {
   id: 'churrasco',
   label: 'Churrasco',
-  icone: '🥩',
   subcategorias: [
     {
       label: 'Porções Maiores',
