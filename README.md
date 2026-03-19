@@ -11,10 +11,10 @@ Desenvolvido para funcionar diretamente no navegador, sem servidor — basta abr
 
 __ Ainda pretendo fazer várias alterações na lista a seguir:
 
-*Segurança: Como criar variáveis de ambiente para abarcar dados sensíveis.
-*Mantenabilidade: Modularizar funções, reduzindo complexidade.
-*Legibilidade: Tipificar o layout e separar o CSS.
-*Organização: Padronizar e reescrever commits.
+* Segurança: Como criar variáveis de ambiente para abarcar dados sensíveis.
+* Mantenabilidade: Modularizar funções, reduzindo complexidade.
+* Legibilidade: Tipificar o layout e separar o CSS.
+* Organização: Padronizar e reescrever commits.
 
 ---
 
@@ -28,13 +28,13 @@ Um cardápio interativo pensado para celular, com navegação por scroll, seleç
 
 ## Funcionalidades
 
-- **Navegação por scroll contínuo** — todas as categorias renderizadas de uma vez; as abas do topo acompanham a posição na tela automaticamente via `IntersectionObserver`
-- **Cards de itens** com nome acima da imagem, foto com lazy load e fallback para emoji
-- **Sub-opções por item** — ex.: tipo de carne, acompanhamento, sabor; preço atualizado ao vivo conforme a escolha
-- **Carrinho inteligente** — agrupa apenas pedidos com exatamente as mesmas opções; permite incrementar, decrementar e editar cada entrada
-- **Seletor de pagamento** — Dinheiro, PIX, Cartão de Crédito ou Cartão de Débito; botão de copiar a chave PIX embutido
-- **Finalização via WhatsApp** — mensagem formatada com todos os itens, total e método de pagamento; botão bloqueado até o método ser escolhido
-- **Design responsivo** com tema madeira escura + dourado, fonte Nunito (Google Fonts)
+* **Navegação por scroll contínuo** — todas as categorias renderizadas de uma vez; as abas do topo acompanham a posição na tela automaticamente via `IntersectionObserver`
+* **Cards de itens** com nome acima da imagem, foto com lazy load e fallback para emoji
+* **Sub-opções por item** — ex.: tipo de carne, acompanhamento, sabor; preço atualizado ao vivo conforme a escolha
+* **Carrinho inteligente** — agrupa apenas pedidos com exatamente as mesmas opções; permite incrementar, decrementar e editar cada entrada
+* **Seletor de pagamento** — Dinheiro, PIX, Cartão de Crédito ou Cartão de Débito; botão de copiar a chave PIX embutido
+* **Finalização via WhatsApp** — mensagem formatada com todos os itens, total e método de pagamento; botão bloqueado até o método ser escolhido
+* **Design responsivo** com tema madeira escura + dourado, fonte Nunito (Google Fonts)
 
 ---
 
@@ -132,10 +132,10 @@ Cada seção tem seu próprio arquivo de dados. Para alterar preços, nomes, ima
 
 ## Tecnologias
 
-- HTML5 / CSS3 / JavaScript ES5 puro — sem frameworks, sem bundler
-- [Google Fonts — Nunito](https://fonts.google.com/specimen/Nunito)
-- [loremflickr.com](https://loremflickr.com) — imagens placeholder (substituir por fotos reais)
-- API Web: `IntersectionObserver`, `navigator.clipboard`
+* HTML5 / CSS3 / JavaScript ES5 puro — sem frameworks, sem bundler
+* [Google Fonts — Nunito](https://fonts.google.com/specimen/Nunito)
+* [loremflickr.com](https://loremflickr.com) — imagens placeholder (substituir por fotos reais)
+* API Web: `IntersectionObserver`, `navigator.clipboard`
 
 ---
 
