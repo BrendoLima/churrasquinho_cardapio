@@ -1,0 +1,732 @@
+/* ============================================================
+   style.css — Churrasquinho do Juanete
+   Fonte principal: Nunito (Google Fonts)
+   Índice:
+     1.  Variáveis & Tipografia
+     2.  Reset
+     3.  Animações (fadeSlide, slideUp, shimmer, shake)
+     4.  Header & Navegação
+     5.  Seção de itens
+     6.  Títulos de categoria/subcategoria
+     7.  Card quadrado (padrão)
+     8.  Card wide (Porções Maiores)
+     9.  Skeleton loader
+    10.  Overlay & Bottom sheet
+    11.  Modal de detalhes
+    12.  Modal de opções
+    13.  Carrinho — itens e controles
+    14.  Carrinho — pagamento (dropdown + pills)
+    15.  Carrinho — PIX
+    16.  Carrinho — total e botão WhatsApp
+    17.  Botão flutuante do carrinho
+    18.  Toast
+============================================================ */
+
+
+/* ── 1. VARIÁVEIS & TIPOGRAFIA ──────────────────────────────── */
+:root {
+  /* Paleta */
+  --gold:       #D4A017;
+  --gold-light: #F0C040;
+  --gold-dark:  #A07810;
+  --accent:     #C0392B;
+  --blue:       #1565C0;
+  --green-wa:   #25D366;
+
+  /* Backgrounds / superfícies */
+  --bg:     #1A1008;
+  --bg2:    #231508;
+  --card:   #2A1A0A;
+  --card2:  #321E0C;
+  --border: #3D2510;
+
+  /* Texto */
+  --text:  #F5E8C8;
+  --muted: #9A8060;
+  --white: #FFF8EE;
+
+  /* Misc */
+  --ease:    .2s ease;
+  --r-card:  12px;
+  --r-pill:  20px;
+
+  /* Nunito em todos os papéis */
+  --font: 'Nunito', sans-serif;
+
+  /* Pesos tipográficos semânticos */
+  --w-regular:    400;
+  --w-medium:     600;   /* subtítulos, labels */
+  --w-bold:       700;   /* nomes de item, preços */
+  --w-extrabold:  800;   /* botões de ação */
+  --w-black:      900;   /* logo, títulos de seção */
+}
+
+
+/* ── 2. RESET ───────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font);
+  font-weight: var(--w-regular);
+  font-size: 14px;
+  line-height: 1.5;
+  background-color: var(--bg);
+  color: var(--text);
+  max-width: 430px;
+  margin: 0 auto;
+  min-height: 100vh;
+  /* Textura sutil de madeira */
+  background-image:
+    repeating-linear-gradient(90deg, transparent 0, transparent 2px, rgba(255,255,255,.01) 2px, rgba(255,255,255,.01) 4px),
+    repeating-linear-gradient(0deg,  transparent 0, transparent 8px, rgba(255,255,255,.008) 8px, rgba(255,255,255,.008) 9px);
+}
+
+button  { font-family: var(--font); cursor: pointer; border: none; background: none; }
+ul      { list-style: none; }
+img     { display: block; }
+select  { font-family: var(--font); }
+
+
+/* ── 3. ANIMAÇÕES ───────────────────────────────────────────── */
+@keyframes fadeSlide {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+@keyframes shimmer {
+  from { background-position: -600px 0; }
+  to   { background-position:  600px 0; }
+}
+/* Shake: movimentação lateral para indicar que falta escolher pagamento */
+@keyframes shake {
+  0%,100% { transform: translateX(0); }
+  15%     { transform: translateX(-7px); }
+  30%     { transform: translateX(7px); }
+  45%     { transform: translateX(-5px); }
+  60%     { transform: translateX(5px); }
+  75%     { transform: translateX(-2px); }
+  90%     { transform: translateX(2px); }
+}
+.shake { animation: shake .45s ease both; }
+
+/* slideDown: painel de pagamento abre para baixo */
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+
+/* ── 4. HEADER & NAVEGAÇÃO ──────────────────────────────────── */
+#header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 14px 16px 0;
+  background: linear-gradient(180deg, #0D0800 60%, var(--bg));
+  border-bottom: 2px solid var(--gold-dark);
+  box-shadow: 0 4px 20px rgba(0,0,0,.8);
+}
+
+/* Cabeçalho centralizado */
+.header-top  { display: flex; justify-content: center; margin-bottom: 10px; }
+.logo-block  { text-align: center; }
+
+/* "Cardápio" e "Restaurante" — pequenos, espaçados */
+.logo-sub {
+  font-size: 9px;
+  font-weight: var(--w-black);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* "Churrasquinho do Juanete" — destaque principal */
+#logo-title {
+  display: block;
+  font-size: 20px;
+  font-weight: var(--w-black);
+  font-style: italic;
+  color: var(--gold);
+  line-height: 1.2;
+  cursor: pointer;
+  user-select: none;
+  transition: opacity var(--ease);
+}
+#logo-title:active { opacity: .7; }
+
+/* Abas: wrap centralizado, quebra linha se necessário */
+#nav-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 6px;
+  padding-bottom: 10px;
+}
+
+.tab {
+  flex-shrink: 0;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: var(--w-bold);
+  letter-spacing: .3px;
+  white-space: nowrap;
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-pill);
+  transition: all var(--ease);
+}
+.tab.active {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0D0800;
+}
+
+
+/* ── 5. SEÇÃO DE ITENS ──────────────────────────────────────── */
+#main { padding: 0 14px 100px; }
+
+.cat-section { padding-top: 4px; }
+.cat-section + .cat-section {
+  border-top: 2px solid var(--border);
+  margin-top: 8px;
+}
+
+/* Grid 2 colunas para cards */
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 8px; }
+
+
+/* ── 6. TÍTULOS ─────────────────────────────────────────────── */
+/* Título principal da categoria */
+.cat-title {
+  font-size: 24px;
+  font-weight: var(--w-black);
+  font-style: italic;
+  color: var(--gold);
+  padding: 16px 0 6px;
+  line-height: 1.2;
+}
+
+/* Título de subcategoria com linha decorativa */
+.sub-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 0 10px;
+  font-size: 14px;
+  font-weight: var(--w-black);
+  letter-spacing: .5px;
+  text-transform: uppercase;
+  color: var(--gold-dark);
+}
+.sub-title::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, var(--gold-dark), transparent);
+}
+
+
+/* ── 7. CARD QUADRADO ───────────────────────────────────────── */
+.card {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+  animation: fadeSlide .3s ease both;
+  transition: transform var(--ease);
+}
+.card:active { transform: scale(.97); }
+
+/* Nome acima da imagem, centralizado */
+.card-name {
+  padding: 9px 8px 6px;
+  font-size: 15px;
+  font-weight: var(--w-bold);
+  color: var(--white);
+  text-align: center;
+  line-height: 1.3;
+}
+
+/* Imagem quadrada */
+.card-thumb {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
+  background: linear-gradient(135deg, var(--card2), #1A0C04);
+  flex-shrink: 0;
+}
+.card-thumb img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-body { flex: 1; display: flex; flex-direction: column; gap: 3px; padding: 6px 10px 10px; }
+.card-info { font-size: 10px; font-weight: var(--w-medium); color: var(--muted); }
+.card-desc { font-size: 10px; color: var(--muted); line-height: 1.4; }
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+/* Preço: Nunito Bold */
+.card-price {
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  color: var(--gold);
+}
+
+/* Botão "+" */
+.add-btn {
+  width: 26px; height: 26px;
+  font-size: 18px; font-weight: var(--w-extrabold); line-height: 1;
+  border-radius: 8px;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold); color: #0D0800;
+  transition: background var(--ease);
+}
+.add-btn:active { background: var(--gold-light); }
+
+
+/* ── 8. CARD WIDE (Porções Maiores) ─────────────────────────── */
+.card-wide { grid-column: span 2; }
+
+.card-wide > .card-name {
+  font-size: 15px;
+  font-weight: var(--w-black);
+  padding: 10px 14px 8px;
+}
+
+.wide-img {
+  width: 100%;
+  aspect-ratio: 16 / 6;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 48px;
+  background: linear-gradient(135deg, var(--card2), #1A0C04);
+}
+.wide-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.card-wide .card-body { padding: 8px 14px 12px; }
+.card-wide .card-price { font-size: 16px; font-weight: var(--w-black); }
+
+
+/* ── 9. SKELETON LOADER ─────────────────────────────────────── */
+.skel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding-top: 16px;
+}
+.skel-card {
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+.skel-block {
+  border-radius: 6px;
+  background: linear-gradient(90deg, var(--card2) 25%, #3e2610 50%, var(--card2) 75%);
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+.skel-name-top { height: 12px; width: 60%; margin: 9px auto 6px; }
+.skel-thumb    { aspect-ratio: 1/1; width: 100%; border-radius: 0; }
+.skel-body     { padding: 7px 10px 12px; }
+.skel-price    { height: 12px; width: 38%; }
+
+
+/* ── 10. OVERLAY & BOTTOM SHEET ─────────────────────────────── */
+.overlay {
+  position: fixed; inset: 0; z-index: 400;
+  display: flex; align-items: flex-end;
+  background: rgba(0,0,0,.85);
+}
+.overlay.hidden { display: none; }
+
+.sheet {
+  width: 100%; max-width: 430px; max-height: 88vh;
+  margin: 0 auto;
+  padding: 20px 18px 28px;
+  overflow-y: auto; scrollbar-width: none;
+  background: var(--bg2);
+  border-top: 2px solid var(--gold-dark);
+  border-radius: 24px 24px 0 0;
+  animation: slideUp .3s ease;
+}
+.sheet::-webkit-scrollbar { display: none; }
+
+.sheet-handle {
+  width: 40px; height: 4px;
+  margin: 0 auto 16px;
+  border-radius: 2px;
+  background: var(--border);
+}
+
+
+/* ── 11. MODAL DE DETALHES ──────────────────────────────────── */
+.modal-img {
+  width: 100%; height: 180px;
+  margin-bottom: 14px;
+  font-size: 60px;
+  overflow: hidden;
+  display: flex; align-items: center; justify-content: center;
+  border-radius: var(--r-card);
+  background: var(--card2);
+}
+.modal-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.modal-title {
+  font-size: 22px;
+  font-weight: var(--w-black);
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.modal-info {
+  font-size: 12px;
+  font-weight: var(--w-bold);
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.modal-desc {
+  font-size: 13px;
+  font-weight: var(--w-regular);
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.modal-price {
+  font-size: 28px;
+  font-weight: var(--w-black);
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.modal-add-btn {
+  width: 100%; padding: 14px;
+  font-size: 15px; font-weight: var(--w-extrabold); letter-spacing: .3px;
+  border-radius: var(--r-card);
+  background: var(--gold); color: #0D0800;
+  transition: background var(--ease);
+}
+.modal-add-btn:active { background: var(--gold-light); }
+
+
+/* ── 12. MODAL DE OPÇÕES ────────────────────────────────────── */
+.opcoes-sheet { padding-bottom: 24px; }
+
+.opcoes-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  gap: 12px; margin-bottom: 16px;
+}
+.opcoes-item-nome {
+  font-size: 18px;
+  font-weight: var(--w-black);
+  color: var(--white);
+  flex: 1;
+}
+.opcoes-preco {
+  font-size: 22px;
+  font-weight: var(--w-black);
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.opcoes-grupo       { margin-bottom: 16px; }
+.opcoes-grupo-label {
+  font-size: 10px;
+  font-weight: var(--w-black);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 9px;
+}
+.opcoes-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.opcoes-pill {
+  padding: 7px 14px;
+  font-size: 13px; font-weight: var(--w-bold);
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border);
+  color: var(--muted); background: var(--card);
+  transition: all var(--ease); white-space: nowrap;
+}
+.opcoes-pill:active  { transform: scale(.96); }
+.opcoes-pill.selected { background: var(--gold); border-color: var(--gold); color: #0D0800; }
+
+.opcoes-add-btn {
+  width: 100%; margin-top: 4px; padding: 14px;
+  font-size: 15px; font-weight: var(--w-extrabold);
+  border-radius: var(--r-card);
+  background: var(--gold); color: #0D0800;
+  transition: all var(--ease);
+}
+.opcoes-add-btn:disabled {
+  background: var(--card2); color: var(--muted);
+  border: 1.5px solid var(--border); cursor: not-allowed;
+}
+.opcoes-add-btn:not(:disabled):active { background: var(--gold-light); }
+
+
+/* ── 13. CARRINHO — ITENS ───────────────────────────────────── */
+.cart-title {
+  font-size: 22px;
+  font-weight: var(--w-black);
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.cart-empty {
+  padding: 28px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+.cart-item {
+  display: flex; align-items: flex-start; justify-content: space-between;
+  gap: 10px; padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Info em linha — desce só se não couber */
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  row-gap: 2px;
+}
+.cart-item-name  { font-size: 16px; font-weight: var(--w-bold); color: var(--white); }
+.cart-item-opts  { font-size: 13px; font-weight: var(--w-medium); color: var(--gold-dark); }
+
+.cart-item-qty-price {
+  width: 100%;          /* sempre na própria linha, abaixo de nome+opts */
+  display: flex; align-items: baseline; gap: 5px;
+  margin-top: 1px;
+}
+.cart-item-qty   { font-size: 13px; font-weight: var(--w-medium); color: var(--muted); }
+.cart-item-price { font-size: 15px; font-weight: var(--w-bold); color: var(--gold); }
+
+/* Controles em linha: − ··· + */
+.cart-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ctrl-btn {
+  width: 30px; height: 30px;
+  border-radius: 8px;
+  font-size: 16px; font-weight: var(--w-extrabold); line-height: 1;
+  display: flex; align-items: center; justify-content: center;
+  transition: all var(--ease);
+}
+.ctrl-plus         { background: var(--blue); color: #fff; }
+.ctrl-plus:active  { opacity: .8; }
+
+.ctrl-edit {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.ctrl-edit:active  { background: var(--border); }
+.dots { font-size: 9px; letter-spacing: 1.5px; }
+
+.ctrl-minus        { background: var(--accent); color: #fff; }
+.ctrl-minus:active { opacity: .8; }
+
+
+/* ── 14. CARRINHO — PAGAMENTO ───────────────────────────────── */
+.payment-wrap {
+  margin-top: 16px;
+  position: relative;
+}
+
+/* Botão trigger: mesmo estilo das pills de opção */
+.payment-trigger {
+  width: 100%;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 16px;
+  font-size: 14px; font-weight: var(--w-bold);
+  color: var(--muted);
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-card);
+  transition: all var(--ease);
+}
+.payment-trigger.chosen {
+  border-color: var(--gold);
+  color: var(--white);
+}
+.payment-trigger:active { opacity: .85; }
+
+.pay-arrow {
+  font-size: 12px;
+  color: var(--muted);
+  transition: transform var(--ease);
+}
+
+/* Painel de opções: abre PARA BAIXO */
+.payment-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height .3s ease, opacity .25s ease;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+.payment-panel.open {
+  max-height: 280px;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Pills de opção de pagamento — mesmo visual das opcoes-pill */
+.pay-opt {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 14px; font-weight: var(--w-bold);
+  color: var(--muted);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  transition: all var(--ease);
+}
+.pay-opt:last-child   { border-bottom: none; }
+.pay-opt:active       { background: var(--card2); }
+.pay-opt.selected     { color: var(--gold); background: rgba(212,160,23,.08); }
+
+
+/* ── 15. CARRINHO — PIX ─────────────────────────────────────── */
+.pix-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.pix-wrap.hidden { display: none; }
+
+.pix-copy-btn {
+  padding: 8px 14px;
+  font-size: 12px; font-weight: var(--w-bold);
+  border-radius: var(--r-pill);
+  background: var(--card2);
+  border: 1.5px solid var(--gold-dark);
+  color: var(--gold);
+  white-space: nowrap;
+  transition: all var(--ease);
+}
+.pix-copy-btn:active { background: var(--gold-dark); color: #0D0800; }
+
+.pix-key {
+  font-size: 11px; font-weight: var(--w-medium);
+  color: var(--muted);
+  letter-spacing: .5px;
+}
+
+
+/* ── 16. CARRINHO — TOTAL & WHATSAPP ────────────────────────── */
+.cart-total {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 14px 0 0;
+}
+.cart-total-label {
+  font-size: 11px; font-weight: var(--w-black);
+  letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--muted);
+}
+.cart-total-value {
+  font-size: 24px; font-weight: var(--w-black);
+  color: var(--gold);
+}
+
+/* Botão WhatsApp — ativo e bloqueado */
+.whats-btn {
+  width: 100%;
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin-top: 14px; padding: 16px;
+  font-size: 14px; font-weight: var(--w-extrabold); letter-spacing: .2px;
+  border-radius: var(--r-card);
+  background: var(--green-wa); color: #fff;
+  transition: opacity var(--ease);
+}
+.whats-btn:not(:disabled):active { opacity: .85; }
+
+/* Estado bloqueado: aguardando seleção de pagamento */
+.whats-btn--locked {
+  background: var(--card2);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  cursor: not-allowed;
+}
+.whats-btn--locked svg { opacity: .3; }
+
+
+/* ── 17. BOTÃO FLUTUANTE DO CARRINHO ────────────────────────── */
+#bottom-nav {
+  position: fixed; bottom: 0; left: 50%; transform: translateX(-50%);
+  z-index: 200; width: 100%; max-width: 430px;
+  padding: 14px 24px 22px;
+  display: flex; justify-content: flex-end; align-items: center;
+  pointer-events: none;
+  background: linear-gradient(0deg, #0D0800 70%, transparent);
+}
+.cart-wrap { position: relative; pointer-events: all; }
+
+#cart-btn {
+  width: 54px; height: 54px; font-size: 24px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--gold); color: #0D0800;
+  box-shadow: 0 4px 20px rgba(212,160,23,.45);
+  transition: transform var(--ease);
+}
+#cart-btn:active { transform: scale(.92); }
+
+#cart-count {
+  position: absolute; top: -4px; right: -4px;
+  width: 20px; height: 20px;
+  font-size: 10px; font-weight: var(--w-extrabold);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff;
+}
+#cart-count.hidden { display: none; }
+
+
+/* ── 18. TOAST ──────────────────────────────────────────────── */
+#toast {
+  position: fixed; bottom: 88px; left: 50%; z-index: 500;
+  padding: 10px 20px;
+  font-size: 13px; font-weight: var(--w-bold); white-space: nowrap;
+  border-radius: 30px; pointer-events: none;
+  opacity: 0; transform: translateX(-50%) translateY(10px);
+  background: var(--card2); border: 1px solid var(--gold-dark); color: var(--white);
+  transition: all .3s ease;
+}
+#toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
