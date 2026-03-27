@@ -1,0 +1,36 @@
+/* ============================================================
+   skeleton.css — Loader de placeholder antes das imagens
+============================================================ */
+
+.skel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  padding-top: 16px;
+}
+
+.skel-card {
+  overflow: hidden;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--r-card);
+}
+
+/* Bloco genérico com animação de brilho */
+.skel-block {
+  border-radius: 6px;
+  background: linear-gradient(
+    90deg,
+    var(--card2) 25%,
+    #3e2610 50%,
+    var(--card2) 75%
+  );
+  background-size: 600px 100%;
+  animation: shimmer 1.4s infinite linear;
+}
+
+/* Proporções de cada parte do skeleton */
+.skel-name-top { height: 12px; width: 60%; margin: 9px auto 6px; }
+.skel-thumb    { aspect-ratio: 1/1; width: 100%; border-radius: 0; }
+.skel-body     { padding: 7px 10px 12px; }
+.skel-price    { height: 12px; width: 38%; }

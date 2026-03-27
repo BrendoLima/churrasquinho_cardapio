@@ -1,0 +1,165 @@
+/* ============================================================
+   modals.css — Overlays, Bottom Sheets, Modal de detalhes
+               e Modal de opções de item.
+============================================================ */
+
+/* ── Overlay e Sheet base ────────────────────────────────────── */
+.overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  display: flex;
+  align-items: flex-end;
+  background: rgba(0,0,0,.85);
+}
+.overlay.hidden { display: none; }
+
+.sheet {
+  width: 100%;
+  max-width: 430px;
+  max-height: 88vh;
+  margin: 0 auto;
+  padding: 20px 18px 28px;
+  overflow-y: auto;
+  scrollbar-width: none;
+  background: var(--bg2);
+  border-top: 2px solid var(--gold-dark);
+  border-radius: 24px 24px 0 0;
+  animation: slideUp .3s ease;
+}
+.sheet::-webkit-scrollbar { display: none; }
+
+.sheet-handle {
+  width: 40px;
+  height: 4px;
+  margin: 0 auto 16px;
+  border-radius: 2px;
+  background: var(--border);
+}
+
+/* ── Modal de detalhes do item ───────────────────────────────── */
+.modal-img {
+  width: 100%;
+  height: 180px;
+  margin-bottom: 14px;
+  font-size: 60px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-card);
+  background: var(--card2);
+}
+.modal-img img { width: 100%; height: 100%; object-fit: cover; }
+
+.modal-title {
+  font-size: 22px;
+  font-weight: var(--w-black);
+  color: var(--white);
+  margin-bottom: 4px;
+}
+.modal-info {
+  font-size: 12px;
+  font-weight: var(--w-bold);
+  color: var(--gold);
+  margin-bottom: 6px;
+}
+.modal-desc {
+  font-size: 13px;
+  font-weight: var(--w-regular);
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 10px;
+}
+.modal-price {
+  font-size: 28px;
+  font-weight: var(--w-black);
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+
+.modal-add-btn {
+  width: 100%;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: .3px;
+  border-radius: var(--r-card);
+  background: var(--gold);
+  color: #0D0800;
+  transition: background var(--ease);
+}
+.modal-add-btn:active { background: var(--gold-light); }
+
+/* ── Modal de opções (sub-seleções do item) ──────────────────── */
+.opcoes-sheet { padding-bottom: 24px; }
+
+.opcoes-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.opcoes-item-nome {
+  font-size: 18px;
+  font-weight: var(--w-black);
+  color: var(--white);
+  flex: 1;
+}
+.opcoes-preco {
+  font-size: 22px;
+  font-weight: var(--w-black);
+  color: var(--gold);
+  white-space: nowrap;
+  transition: color var(--ease);
+}
+
+.opcoes-grupo       { margin-bottom: 16px; }
+.opcoes-grupo-label {
+  font-size: 10px;
+  font-weight: var(--w-black);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 9px;
+}
+
+.opcoes-pills { display: flex; flex-wrap: wrap; gap: 7px; }
+
+.opcoes-pill {
+  padding: 7px 14px;
+  font-size: 13px;
+  font-weight: var(--w-bold);
+  border-radius: var(--r-pill);
+  border: 1.5px solid var(--border);
+  color: var(--muted);
+  background: var(--card);
+  white-space: nowrap;
+  transition: all var(--ease);
+}
+.opcoes-pill:active   { transform: scale(.96); }
+.opcoes-pill.selected {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #0D0800;
+}
+
+.opcoes-add-btn {
+  width: 100%;
+  margin-top: 4px;
+  padding: 14px;
+  font-size: 15px;
+  font-weight: var(--w-extrabold);
+  border-radius: var(--r-card);
+  background: var(--gold);
+  color: #0D0800;
+  transition: all var(--ease);
+}
+.opcoes-add-btn:disabled {
+  background: var(--card2);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  cursor: not-allowed;
+}
+.opcoes-add-btn:not(:disabled):active { background: var(--gold-light); }

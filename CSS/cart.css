@@ -1,0 +1,233 @@
+/* ============================================================
+   cart.css — Carrinho de pedidos
+   Inclui: lista de itens, controles, seletor de pagamento,
+           PIX, total e botão WhatsApp.
+============================================================ */
+
+/* ── Cabeçalho e estado vazio ────────────────────────────────── */
+.cart-title {
+  font-size: 22px;
+  font-weight: var(--w-black);
+  color: var(--white);
+  margin-bottom: 14px;
+}
+.cart-empty {
+  padding: 28px 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--muted);
+}
+
+/* ── Item do carrinho ────────────────────────────────────────── */
+.cart-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 13px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Info em linha — nome e opções na mesma linha; quebra só se necessário */
+.cart-item-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 8px;
+  row-gap: 2px;
+}
+.cart-item-name  { font-size: 16px; font-weight: var(--w-bold); color: var(--white); }
+.cart-item-opts  { font-size: 13px; font-weight: var(--w-medium); color: var(--gold-dark); }
+
+.cart-item-qty-price {
+  width: 100%;   /* sempre na própria linha, abaixo de nome + opts */
+  display: flex;
+  align-items: baseline;
+  gap: 5px;
+  margin-top: 1px;
+}
+.cart-item-qty   { font-size: 13px; font-weight: var(--w-medium); color: var(--muted); }
+.cart-item-price { font-size: 15px; font-weight: var(--w-bold); color: var(--gold); }
+
+/* ── Controles em linha: − ··· + ─────────────────────────────── */
+.cart-controls {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ctrl-btn {
+  width: 30px;
+  height: 30px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: var(--w-extrabold);
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all var(--ease);
+}
+
+.ctrl-plus         { background: var(--blue); color: #fff; }
+.ctrl-plus:active  { opacity: .8; }
+
+.ctrl-edit {
+  background: var(--card2);
+  border: 1px solid var(--border);
+  color: var(--muted);
+}
+.ctrl-edit:active  { background: var(--border); }
+.dots { font-size: 9px; letter-spacing: 1.5px; }
+
+.ctrl-minus        { background: var(--accent); color: #fff; }
+.ctrl-minus:active { opacity: .8; }
+
+/* ── Seletor de pagamento ────────────────────────────────────── */
+.payment-wrap {
+  margin-top: 16px;
+  position: relative;
+}
+
+/* Trigger: mesmo visual das pills de opção */
+.payment-trigger {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  color: var(--muted);
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-radius: var(--r-card);
+  transition: all var(--ease);
+}
+.payment-trigger.chosen {
+  border-color: var(--gold);
+  color: var(--white);
+}
+.payment-trigger:active { opacity: .85; }
+
+.pay-arrow {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* Painel: abre para baixo */
+.payment-panel {
+  overflow: hidden;
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+  transition: max-height .3s ease, opacity .25s ease;
+  background: var(--card);
+  border: 1.5px solid var(--border);
+  border-top: none;
+  border-radius: 0 0 var(--r-card) var(--r-card);
+  display: flex;
+  flex-direction: column;
+}
+.payment-panel.open {
+  max-height: 280px;
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* Opções dentro do painel */
+.pay-opt {
+  width: 100%;
+  padding: 13px 16px;
+  font-size: 14px;
+  font-weight: var(--w-bold);
+  color: var(--muted);
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  transition: all var(--ease);
+}
+.pay-opt:last-child   { border-bottom: none; }
+.pay-opt:active       { background: var(--card2); }
+.pay-opt.selected     { color: var(--gold); background: rgba(212,160,23,.08); }
+
+/* ── Botão copiar chave PIX ──────────────────────────────────── */
+.pix-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+.pix-wrap.hidden { display: none; }
+
+.pix-copy-btn {
+  padding: 8px 14px;
+  font-size: 12px;
+  font-weight: var(--w-bold);
+  border-radius: var(--r-pill);
+  background: var(--card2);
+  border: 1.5px solid var(--gold-dark);
+  color: var(--gold);
+  white-space: nowrap;
+  transition: all var(--ease);
+}
+.pix-copy-btn:active { background: var(--gold-dark); color: #0D0800; }
+
+.pix-key {
+  font-size: 11px;
+  font-weight: var(--w-medium);
+  color: var(--muted);
+  letter-spacing: .5px;
+}
+
+/* ── Total ───────────────────────────────────────────────────── */
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0 0;
+}
+.cart-total-label {
+  font-size: 11px;
+  font-weight: var(--w-black);
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+.cart-total-value {
+  font-size: 24px;
+  font-weight: var(--w-black);
+  color: var(--gold);
+}
+
+/* ── Botão WhatsApp ──────────────────────────────────────────── */
+.whats-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 14px;
+  padding: 16px;
+  font-size: 14px;
+  font-weight: var(--w-extrabold);
+  letter-spacing: .2px;
+  border-radius: var(--r-card);
+  background: var(--green-wa);
+  color: #fff;
+  transition: opacity var(--ease);
+}
+.whats-btn:not(:disabled):active { opacity: .85; }
+
+/* Estado bloqueado: aguardando seleção de pagamento */
+.whats-btn--locked {
+  background: var(--card2);
+  color: var(--muted);
+  border: 1.5px solid var(--border);
+  cursor: not-allowed;
+}
+.whats-btn--locked svg { opacity: .3; }
