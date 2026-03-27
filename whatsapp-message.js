@@ -7,9 +7,6 @@
      ✅  🔥  💰  💳  💵  📱  •
    ============================================================ */
 
-/*Possivel melhoria, chamar a função de quebra de linha atraves 
-de 
-uma lista de arrays onde cada novo elemento do array é uma nova linha*/
 var WHATSAPP_NUMBER = '5522991016613'
 
 /* Monta o texto completo da mensagem */
