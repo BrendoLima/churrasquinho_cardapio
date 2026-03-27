@@ -1,50 +1,46 @@
 /* ============================================================
    whatsapp-message.js — Template da mensagem enviada ao WhatsApp
-   Depende de: app.js (fmtPrice, buildSelectionsLabel)
-   Carregado APÓS app.js no index.html
+   Depende de: js/config.js (CONFIG), js/utils.js (fmtPrice, buildSelectionsLabel)
+   Carregado após cart.js no index.html.
 
-   Emojis usados: apenas os reconhecidos pelo WhatsApp
-     ✅  🔥  💰  💳  💵  📱  •
-   ============================================================ */
+   Emojis usados: apenas os suportados nativamente pelo WhatsApp
+     🔥  💰  💵  📱  💳  ✅  •
+============================================================ */
 
-var WHATSAPP_NUMBER = '5522991016613'
+function buildWhatsAppMessage(entries, total, paymentMethod) {
+  var lines = []
 
-/* Monta o texto completo da mensagem */
-function buildWhatsAppMsg(entries, total, metodoPagamento) {
-  var linhas = []
+  lines.push('🔥 *Churrasquinho do Juanete*')
+  lines.push('')
 
-  linhas.push('🔥 *Churrasquinho do Juanete*')
-  linhas.push('')
-
-  entries.forEach(function (e) {
-    var sub = buildSelectionsLabel(e.item, e.selections)
-    var linha = '• ' + e.qty + 'x ' + e.item.nome
-    if (sub) linha += ' (' + sub + ')'
-    linha += '  -  ' + fmtPrice(e.preco * e.qty)
-    linhas.push(linha)
+  entries.forEach(function (entry) {
+    var options = buildSelectionsLabel(entry.item, entry.selections)
+    var line = '• ' + entry.qty + 'x ' + entry.item.nome
+    if (options) line += ' (' + options + ')'
+    line += '  -  ' + fmtPrice(entry.price * entry.qty)
+    lines.push(line)
   })
 
-  linhas.push('')
-  linhas.push('💰 Total: *' + fmtPrice(total) + '*')
+  lines.push('')
+  lines.push('💰 Total: *' + fmtPrice(total) + '*')
 
-  if (metodoPagamento) {
-    var icone = metodoPagamento === 'Dinheiro' ? '💵'
-      : metodoPagamento === 'PIX' ? '📱'
+  if (paymentMethod) {
+    var icon = paymentMethod === 'Dinheiro' ? '💵'
+      : paymentMethod === 'PIX' ? '📱'
         : '💳'
-    linhas.push(icone + ' Metodo de Pagamento: *' + metodoPagamento + '*')
+    lines.push(icon + ' Metodo de Pagamento: *' + paymentMethod + '*')
   }
 
-  linhas.push('')
-  linhas.push('✅ Envie esta mensagem para confirmar seu pedido !')
+  lines.push('')
+  lines.push('✅ Envie esta mensagem para confirmar seu pedido!')
 
-  return linhas.join('\n')
+  return lines.join('\n')
 }
 
-/* Abre o WhatsApp com a mensagem montada */
-function sendWhatsApp(entries, total, metodoPagamento) {
-  var msg = buildWhatsAppMsg(entries, total, metodoPagamento)
+function sendWhatsApp(entries, total, paymentMethod) {
+  var message = buildWhatsAppMessage(entries, total, paymentMethod)
   window.open(
-    'https://wa.me/' + WHATSAPP_NUMBER + '?text=' + encodeURIComponent(msg),
+    'https://wa.me/' + CONFIG.whatsappNumber + '?text=' + encodeURIComponent(message),
     '_blank'
   )
 }

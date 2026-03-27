@@ -1,7 +1,7 @@
 # churrasquinho-cardapio
 
-Cardápio virtual mobile para o **Churrasquinho do Juanete**, churrascaria localizada em Porciuncula/RJ.  
-Desenvolvido para funcionar diretamente no navegador, sem servidor — basta abrir o `index.html`.
+Cardápio virtual mobile para o **Churrasquinho do Juanete**, churrascaria em Porciúncula/RJ.  
+Funciona diretamente no navegador — sem servidor, sem build, sem dependências.
 
 ---
 
@@ -9,34 +9,26 @@ Desenvolvido para funcionar diretamente no navegador, sem servidor — basta abr
 
 ---
 
-### Comentários do Autor (Importante!!!)
+### Notas do autor
 
-__ Ainda pretendo fazer várias alterações na lista a seguir:
+Melhorias planejadas para versões futuras:
 
-* Segurança: Como criar variáveis de ambiente para abarcar dados sensíveis.
-* Mantenabilidade: Modularizar funções, reduzindo complexidade.
-* Legibilidade: Tipificar o layout e separar o CSS.
-* Organização: Padronizar e reescrever commits.
-
----
-
-## Visão geral
-
-Um cardápio interativo pensado para celular, com navegação por scroll, seleção de sub-opções por item, carrinho de pedidos e integração direta com WhatsApp para finalizar o pedido.
-
-![Preview do cardápio em modo escuro com tema madeira e dourado]()
+- **Segurança** — variáveis de ambiente para dados sensíveis
+- **Manutenibilidade** — modularizar funções, reduzindo complexidade
+- **Legibilidade** — tipificar o layout e separar o CSS
+- **Organização** — padronizar e reescrever commits
 
 ---
 
 ## Funcionalidades
 
-* **Navegação por scroll contínuo** — todas as categorias renderizadas de uma vez; as abas do topo acompanham a posição na tela automaticamente via `IntersectionObserver`
-* **Cards de itens** com nome acima da imagem, foto com lazy load e fallback para emoji
-* **Sub-opções por item** — ex.: tipo de carne, acompanhamento, sabor; preço atualizado ao vivo conforme a escolha
-* **Carrinho inteligente** — agrupa apenas pedidos com exatamente as mesmas opções; permite incrementar, decrementar e editar cada entrada
-* **Seletor de pagamento** — Dinheiro, PIX, Cartão de Crédito ou Cartão de Débito; botão de copiar a chave PIX embutido
-* **Finalização via WhatsApp** — mensagem formatada com todos os itens, total e método de pagamento; botão bloqueado até o método ser escolhido
-* **Design responsivo** com tema madeira escura + dourado, fonte Nunito (Google Fonts)
+- **Navegação por scroll** — todas as seções renderizadas de uma vez; abas acompanham o scroll via `IntersectionObserver`
+- **Sub-opções por item** — ex.: tipo de carne, acompanhamento, sabor; preço atualizado ao vivo
+- **Carrinho inteligente** — agrupa apenas pedidos com as mesmas opções; suporta incrementar, decrementar e editar
+- **Seletor de pagamento** — Dinheiro, PIX, Cartão de Crédito ou Débito; botão para copiar a chave PIX
+- **Finalização via WhatsApp** — mensagem formatada com itens, total e método de pagamento; botão bloqueado até escolher o método
+- **Lazy load** nas imagens; fallback automático para emoji quando a imagem falha
+- **Vercel Analytics** integrado via `/_vercel/insights/script.js`
 
 ---
 
@@ -46,104 +38,125 @@ Um cardápio interativo pensado para celular, com navegação por scroll, seleç
 churrasquinho-cardapio/
 │
 ├── index.html              # Shell HTML — carrega os scripts na ordem correta
-├── style.css               # Todo o estilo do projeto
+├── style.css               # Estilos (tema madeira escura + dourado, fonte Nunito)
+├── whatsapp-message.js     # Template e envio da mensagem via WhatsApp
 │
-├── data-especiais.js       # Dados: Especiais e Acompanhamentos
-├── data-porcoes.js         # Dados: Porções e Combos
-├── data-churrasco.js       # Dados: Porções Maiores (cards wide)
-├── data-bebidas.js         # Dados: Bebidas não-alcoólicas
-├── data-alcool.js          # Dados: Cervejas, Drinks, Destilados e Doces
-├── data.js                 # Assembler — monta o array global CARDAPIO
+├── data/
+│   ├── sections.js         # Registry: lista de seções e seus arquivos JSON
+│   ├── especiais.json      # Dados: Churrasquinho, Jantinha e Acompanhamentos
+│   ├── porcoes.json        # Dados: Porções e Combos
+│   ├── churrasco.json      # Dados: Porções Maiores (cards wide)
+│   ├── bebidas.json        # Dados: Refrigerantes, Águas e outros
+│   └── alcool.json         # Dados: Cervejas, Destilados, Drinks e Doces
 │
-├── app.js                  # Lógica da aplicação (render, carrinho, modais)
-└── whatsapp-message.js     # Template e envio da mensagem via WhatsApp
+└── js/
+    ├── config.js           # Constantes: número do WhatsApp, chave PIX
+    ├── utils.js            # Funções puras reutilizáveis
+    ├── render.js           # Construtores de DOM (cards, header, seções)
+    ├── modal.js            # Modais de detalhe e opções
+    ├── cart.js             # Estado e UI do carrinho
+    └── main.js             # Fetch dos JSONs e inicialização do app
 ```
 
-### Ordem de carregamento obrigatória
+### Ordem de carregamento dos scripts
 
-```html
-data-especiais.js → data-porcoes.js → data-churrasco.js
-→ data-bebidas.js → data-alcool.js → data.js → app.js → whatsapp-message.js
+```
+sections.js → config.js → utils.js → render.js
+→ modal.js → cart.js → whatsapp-message.js → main.js
 ```
 
 ---
 
-## Como usar
+## Como adicionar uma nova seção ao cardápio
 
-1. Baixe ou clone este repositório
-2. Abra o arquivo `index.html` em qualquer navegador moderno
-3. Nenhum servidor, build ou dependência necessária
-
-```bash
-git clone https://github.com/seu-usuario/churrasquinho-cardapio.git
-cd churrasquinho-cardapio
-# abra index.html no navegador
-```
-
----
-
-## Como editar o cardápio
-
-Cada seção tem seu próprio arquivo de dados. Para alterar preços, nomes, imagens ou opções, edite o arquivo correspondente:
-
-| Arquivo | O que contém |
-|---|---|
-| `data-especiais.js` | Churrasquinho, Jantinha e Acompanhamentos |
-| `data-porcoes.js` | Porções fritas, Combos |
-| `data-churrasco.js` | Churrasco na Pedra e Porção Mista (400g / 800g) |
-| `data-bebidas.js` | Refrigerantes, Águas e outros |
-| `data-alcool.js` | Cervejas, Destilados, Drinks e Doces |
-
-### Campos de cada item
-
+1. Crie `data/nova-secao.json` com a estrutura abaixo
+2. Adicione uma entrada em `data/sections.js`:
 ```js
+{ id: 'nova-secao', label: 'Nome da Seção', file: 'data/nova-secao.json' }
+```
+Só isso — o resto acontece automaticamente.
+
+---
+
+## Estrutura do JSON de uma seção
+
+```json
 {
-  id:        'id_unico',          // identificador interno
-  nome:      'Nome do Item',      // exibido no card e no carrinho
-  preco:     22.00,               // valor base em reais
-  descricao: 'Descrição curta.',  // exibida no modal de detalhe
-  img:       '',                  // URL da foto — preencher com caminho real
-  info:      '400g',              // informação extra (opcional)
-  layout:    'wide',              // 'wide' = card largo; omitido = card quadrado
-  opcoes: [                       // sub-seleções (opcional)
+  "subcategorias": [
     {
-      label:      'Acompanhamento',
-      obrigatorio: true,
-      choices: [
-        { id: 'batata', label: 'Batata Frita', extra: 0 },
-        { id: 'mand',   label: 'Mandioquinha', extra: 0 }
+      "label": "Nome da Subcategoria (opcional)",
+      "itens": [
+        {
+          "id":        "id_unico",
+          "nome":      "Nome do Item",
+          "preco":     22.00,
+          "descricao": "Descrição exibida no modal.",
+          "img":       "",
+          "info":      "400g",
+          "layout":    "wide",
+          "opcoes": [
+            {
+              "label":      "Acompanhamento",
+              "obrigatorio": true,
+              "choices": [
+                { "id": "batata", "label": "Batata Frita", "extra": 0 },
+                { "id": "mand",   "label": "Mandioquinha",  "extra": 0 }
+              ]
+            }
+          ]
+        }
       ]
     }
   ]
 }
 ```
 
-> **Sobre as imagens:** todos os campos `img` estão com `''` aguardando as fotos reais.  
-> Basta substituir a string vazia pela URL ou caminho relativo da imagem, ex.: `img: 'fotos/churrasquinho.jpg'`
+> `img: ""` = aguardando foto real. Substitua pela URL ou caminho relativo.  
+> `layout: "wide"` = card retangular (use apenas em Porções Maiores).  
+> `opcoes` e `info` são opcionais.
 
 ---
 
 ## Configurações rápidas
 
-| O que mudar | Onde mudar |
-|---|---|
-| Número do WhatsApp | `whatsapp-message.js` → `var WHATSAPP_NUMBER` |
-| Chave PIX | `app.js` → `navigator.clipboard.writeText('...')` |
-| Cores e fontes | `style.css` → seção `1. Variáveis & Tipografia` |
-| Imagens dos itens | Arquivo `data-*.js` correspondente → campo `img` |
+| O que mudar | Arquivo | Campo |
+|---|---|---|
+| Número do WhatsApp | `js/config.js` | `CONFIG.whatsappNumber` |
+| Chave PIX | `js/config.js` | `CONFIG.pixKey` e `CONFIG.pixKeyDisplay` |
+| Cores e fontes | `style.css` | Seção `1. Variáveis & Tipografia` |
+| Imagem de um item | `data/*.json` | Campo `img` do item |
+
+---
+
+## Pré-requisitos para desenvolvimento local
+
+Como os dados são carregados via `fetch()`, abrir o `index.html` diretamente pelo sistema de arquivos (`file://`) não funciona. Use um servidor local:
+
+```bash
+# Com Node.js
+npx serve .
+
+# Com Python
+python -m http.server 8000
+
+# Com VS Code
+# Instale a extensão "Live Server" e clique em "Go Live"
+```
+
+Em produção (Vercel), nenhuma configuração adicional é necessária.
 
 ---
 
 ## Tecnologias
 
-* HTML5 / CSS3 / JavaScript ES5 puro — sem frameworks, sem bundler
-* [Google Fonts — Nunito](https://fonts.google.com/specimen/Nunito)
-* [Vercel Analytics](https://vercel.com/docs/analytics) — pageviews via `/_vercel/insights/script.js` (ativo automaticamente ao hospedar na Vercel)
-* API Web: `IntersectionObserver`, `navigator.clipboard`
+- HTML5 / CSS3 / JavaScript ES5 — sem frameworks, sem bundler
+- [Google Fonts — Nunito](https://fonts.google.com/specimen/Nunito)
+- [Vercel Analytics](https://vercel.com/docs/analytics) — ativo automaticamente ao hospedar na Vercel
+- Web APIs: `fetch`, `Promise.all`, `IntersectionObserver`, `navigator.clipboard`
 
 ---
 
 ## Licença
 
 Projeto de uso privado do estabelecimento **Churrasquinho do Juanete**.  
-Repositório público para fins de portfólio e divulgação. Não são aceitas contribuições externas.
+Repositório público para fins de portfólio. Não são aceitas contribuições externas.
